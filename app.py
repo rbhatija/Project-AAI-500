@@ -5,7 +5,7 @@ class AttritionPredictor:
     def __init__(self):
         """Initialize the predictor by loading the models and setting options."""
         self.rf_model = joblib.load("attrition_model_basic.pkl")  # Random Forest Model
-        self.xgb_model = joblib.load("attrition_model_oversampled.pkl")  # XGBoost Model
+        self.rfo_model = joblib.load("attrition_model_oversampled.pkl")  # Random forest over sample
         self.model = None
         self.model_name = ""
 
@@ -33,7 +33,7 @@ class AttritionPredictor:
                 self.model_name = "Random Forest"
                 break
             elif choice == "RFO":
-                self.model = self.xgb_model
+                self.model = self.rfo_model
                 self.model_name = "Random Forest Oversampled"
                 break
             else:
